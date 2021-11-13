@@ -22,14 +22,14 @@ public class UserRoleMapper {
         return userRoleEntity;
     }
 
-    public static UserRoleModel toModel(UserRoleEntity userRoleEntity) {
-        return new UserRoleModel(userRoleEntity.getUserId(), userRoleEntity.getRoleId());
+    public static UserRoleModel toModel(UserRoleEntity entity) {
+        return new UserRoleModel(entity.getUserId(), entity.getRoleId());
     }
 
-    public static UserRoleEntity toEntity(UserRoleModel userRoleModel) {
+    public static UserRoleEntity toEntity(UserRoleModel model) {
         UserRoleEntity userRoleEntity = new UserRoleEntity();
-        userRoleEntity.setUserId(userRoleModel.userId());
-        userRoleEntity.setRoleId(userRoleModel.roleId());
+        userRoleEntity.setUserId(model.userId());
+        userRoleEntity.setRoleId(model.roleId());
         return userRoleEntity;
     }
 

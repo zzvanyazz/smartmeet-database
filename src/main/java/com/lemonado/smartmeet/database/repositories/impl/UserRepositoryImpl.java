@@ -76,7 +76,7 @@ public class UserRepositoryImpl implements UserModelRepository {
     public Optional<UserModel> createUser(UserModel userModel) {
         var userEntity = UserMapper.toEntity(userModel);
         userEntity = userDatabaseRepository.save(userEntity);
-        userModel = UserMapper.toModel(userEntity);
-        return Optional.of(userModel);
+        return Optional.of(userEntity)
+                .map(UserMapper::toModel);
     }
 }

@@ -15,6 +15,8 @@ public class RegistrationCodeMapper {
     }
 
     public static StartRegistrationModel toModel(RegistrationCodeEntity entity) {
+        if (entity == null)
+            return null;
         return new StartRegistrationModelBuilder()
                 .withRegistrationCode(entity.getRegistrationCode())
                 .withEmail(entity.getEmail())

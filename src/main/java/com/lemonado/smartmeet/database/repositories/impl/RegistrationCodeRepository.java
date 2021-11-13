@@ -25,7 +25,8 @@ public class RegistrationCodeRepository implements RegistrationRepository {
 
     @Override
     public Optional<StartRegistrationModel> getRegistrationModelByCode(String code) {
-        return repository.getByRegistrationCode(code).map(RegistrationCodeMapper::toModel);
+        return repository.getByRegistrationCode(code)
+                .map(RegistrationCodeMapper::toModel);
     }
 
     @Transactional
