@@ -1,7 +1,8 @@
 package com.lemonado.smartmeet.database.data.mappers;
 
 import com.lemonado.smartmeet.core.data.models.group.GroupModel;
-import com.lemonado.smartmeet.core.data.models.group.GroupModelBuilder;
+import com.lemonado.smartmeet.core.data.models.group.GroupUserModel;
+import com.lemonado.smartmeet.core.data.models.group.builder.GroupModelBuilder;
 import com.lemonado.smartmeet.database.data.modes.GroupEntity;
 
 public class GroupMapper {
@@ -17,7 +18,6 @@ public class GroupMapper {
         groupEntity.setCreator(creator);
 
         groupEntity.setCode(groupModel.code());
-        groupEntity.setUsers(ListMapper.mapToSet(groupModel.users(), UserMapper::toEntity));
 
         return groupEntity;
     }

@@ -19,7 +19,7 @@ public class GroupRepositoryImpl implements GroupRepository {
 
 
     @Override
-    public GroupModel safe(GroupModel groupModel) {
+    public GroupModel save(GroupModel groupModel) {
         var groupEntity = GroupMapper.toEntity(groupModel);
         groupEntity = groupRepository.save(groupEntity);
         return GroupMapper.toModel(groupEntity);
@@ -49,7 +49,7 @@ public class GroupRepositoryImpl implements GroupRepository {
 
     @Override
     public GroupModel update(GroupModel groupModel) {
-        return safe(groupModel);
+        return save(groupModel);
     }
 
     @Override

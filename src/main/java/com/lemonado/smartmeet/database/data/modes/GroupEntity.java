@@ -20,8 +20,8 @@ public class GroupEntity {
     @Column(name = "code", unique = true)
     private String code;
 
-    @ManyToMany
-    private Set<UserEntity> users;
+    @OneToMany
+    private Set<GroupUserEntity> users;
 
 
     public long getId() {
@@ -56,11 +56,11 @@ public class GroupEntity {
         this.code = code;
     }
 
-    public Set<UserEntity> getUsers() {
+    public Set<GroupUserEntity> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<UserEntity> users) {
+    public void setUsers(Set<GroupUserEntity> users) {
         this.users = users;
     }
 }
