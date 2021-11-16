@@ -3,6 +3,7 @@ package com.lemonado.smartmeet.database.data.mappers;
 import com.lemonado.smartmeet.core.data.models.users.UserModel;
 import com.lemonado.smartmeet.core.data.models.users.builders.UserModelBuilder;
 import com.lemonado.smartmeet.database.data.modes.UserEntity;
+import com.lemonado.smartmeet.database.data.options.MappingOptions;
 
 public class UserMapper {
 
@@ -20,15 +21,19 @@ public class UserMapper {
     }
 
     public static UserModel toModel(UserEntity entity) {
-        if (entity == null)
+        return toModel(entity, MappingOptions.DEFAULT_MAPPING_DEPTH);
+    }
+
+    public static UserModel toModel(UserEntity entity, int depth) {
+        if (entity == null || depth == 0)
             return null;
-        var userModelBuilder = new UserModelBuilder();
-        userModelBuilder.withId(entity.getId());
-        userModelBuilder.withUsername(entity.getUsername());
-        userModelBuilder.withPasswordHash(entity.getPasswordHash());
-        userModelBuilder.withEmail(entity.getEmail());
-        userModelBuilder.withDeleteTimestamp(entity.getDeleteTimestamp());
-        userModelBuilder.withValidTokenTimestamp(entity.getValidTokenTimestamp());
+        var userModelBuilder = UserModelBuilder.builder()
+                .withId(entity.getId())
+                .withUsername(entity.getUsername())
+                .withPasswordHash(entity.getPasswordHash())
+                .withEmail(entity.getEmail())
+                .withDeleteTimestamp(entity.getDeleteTimestamp())
+                .withValidTokenTimestamp(entity.getValidTokenTimestamp());
         return userModelBuilder.build();
     }
 

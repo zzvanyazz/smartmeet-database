@@ -8,13 +8,13 @@ public class RoleMapper {
     public static RoleModel toModel(RoleEntity entity) {
         if (entity == null)
             return null;
-        var roleModelBuilder = RoleModel.builder();
-        roleModelBuilder.withId(entity.getId());
-        roleModelBuilder.withName(entity.getName());
-        roleModelBuilder.withDescription(entity.getDescription());
-        roleModelBuilder.withCreateTimestamp(entity.getCreateTimestamp());
-        roleModelBuilder.withUpdateTimestamp(entity.getUpdateTimestamp());
-        return roleModelBuilder.build();
+        return RoleModel.builder()
+                .withId(entity.getId())
+                .withName(entity.getName())
+                .withDescription(entity.getDescription())
+                .withCreateTimestamp(entity.getCreateTimestamp())
+                .withUpdateTimestamp(entity.getUpdateTimestamp())
+                .build();
     }
 
     public static RoleEntity toEntity(RoleModel model) {

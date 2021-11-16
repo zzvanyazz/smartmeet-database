@@ -14,7 +14,6 @@ public class GroupEntity {
     private String name;
 
     @ManyToOne()
-    @Column(name = "creator")
     private UserEntity creator;
 
     @Column(name = "code", unique = true)
