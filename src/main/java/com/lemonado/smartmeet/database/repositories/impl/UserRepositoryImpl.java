@@ -29,31 +29,15 @@ public class UserRepositoryImpl implements UserModelRepository {
     }
 
     @Override
-    public Optional<UserModel> findLive(String normalizedUsername) {
-        Optional<UserEntity> userEntity = userDatabaseRepository.findAlive(normalizedUsername);
-        return userEntity.map(UserMapper::toModel);
-    }
-
-    @Override
-    public Optional<UserModel> findActive(String normalizedUsername) {
-        Optional<UserEntity> userEntity = userDatabaseRepository.findActive(normalizedUsername);
-        return userEntity.map(UserMapper::toModel);
+    public Optional<UserModel> findLive(String email) {
+        return userDatabaseRepository.findAlive(email)
+                .map(UserMapper::toModel);
     }
 
     @Override
     public Optional<UserModel> findActive(Long id) {
-        Optional<UserEntity> userEntity = userDatabaseRepository.findActive(id);
-        return userEntity.map(UserMapper::toModel);
-    }
-
-    @Override
-    public Optional<UserModel> findByName(String name) {
-        return userDatabaseRepository.findByUsername(name).map(UserMapper::toModel);
-    }
-
-    @Override
-    public boolean existsByName(String name) {
-        return userDatabaseRepository.existsByUsername(name);
+        return userDatabaseRepository.findActiveById(id)
+                .map(UserMapper::toModel);
     }
 
     @Override

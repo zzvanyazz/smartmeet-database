@@ -5,10 +5,12 @@ import com.lemonado.smartmeet.core.repositories.TimeLineRepository;
 import com.lemonado.smartmeet.database.data.mappers.TimeLineMapper;
 import com.lemonado.smartmeet.database.repositories.db.TimeLineDatabaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Repository
 public class TimeLineRepositoryImpl implements TimeLineRepository {
 
     @Autowired

@@ -9,7 +9,7 @@ public class GroupUserId implements Serializable {
     public GroupUserId() {
     }
 
-    public GroupUserId(long userId, long groupId) {
+    public GroupUserId(long groupId, long userId) {
         this.userId = userId;
         this.groupId = groupId;
     }
