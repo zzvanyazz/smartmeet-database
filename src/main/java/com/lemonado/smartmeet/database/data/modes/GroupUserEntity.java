@@ -12,12 +12,19 @@ import java.time.LocalDateTime;
 public class GroupUserEntity {
 
     @Id
-    public GroupUserId id;
+    @Column(name = "group_id")
+    public long groupId;
+
+    @Id
+    @Column(name = "user_id")
+    public long userId;
 
     @ManyToOne
+    @JoinColumn(name = "group_id", insertable = false, updatable = false)
     public GroupEntity group;
 
     @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     public UserEntity user;
 
     @Column
@@ -26,29 +33,33 @@ public class GroupUserEntity {
     @Column
     public LocalDateTime inviteTime;
 
-    public GroupUserId getId() {
-        return id;
+    public long getGroupId() {
+        return groupId;
     }
 
-    public void setId(GroupUserId id) {
-        this.id = id;
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public GroupEntity getGroup() {
         return group;
     }
 
-    public void setGroup(GroupEntity groupModel) {
-        this.group = groupModel;
-    }
+
 
     public UserEntity getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
+
 
     public AddedUserStatus getStatus() {
         return status;

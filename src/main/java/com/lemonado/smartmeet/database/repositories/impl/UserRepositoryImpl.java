@@ -47,13 +47,13 @@ public class UserRepositoryImpl implements UserModelRepository {
     }
 
     @Override
-    public Optional<UserModel> findByName(String normalizedUsername) {
-        return userDatabaseRepository.findByNormalizedUsername(normalizedUsername).map(UserMapper::toModel);
+    public Optional<UserModel> findByName(String name) {
+        return userDatabaseRepository.findByUsername(name).map(UserMapper::toModel);
     }
 
     @Override
-    public boolean existsByName(String normalizedUsername) {
-        return userDatabaseRepository.existsByNormalizedUsername(normalizedUsername);
+    public boolean existsByName(String name) {
+        return userDatabaseRepository.existsByUsername(name);
     }
 
     @Override

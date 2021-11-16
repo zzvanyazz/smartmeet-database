@@ -19,11 +19,9 @@ public class TimeLineEntity {
     private LocalDateTime endDate;
 
     @ManyToOne
-    @Column(name = "group")
     private GroupEntity group;
 
     @ManyToOne
-    @Column(name = "user")
     private UserEntity user;
 
     @Column(name = "type")

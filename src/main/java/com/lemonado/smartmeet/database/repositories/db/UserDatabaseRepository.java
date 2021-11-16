@@ -19,9 +19,9 @@ public interface UserDatabaseRepository extends CrudRepository<UserEntity, Long>
     @Query("SELECT u FROM UserEntity u WHERE u.id = :id AND u.deleteTimestamp IS NULL")
     Optional<UserEntity> findActive(long id);
 
-    Optional<UserEntity> findByNormalizedUsername(String normalisedUsername);
+    Optional<UserEntity> findByUsername(String userName);
 
-    boolean existsByNormalizedUsername(String normalisedUsername);
+    boolean existsByUsername(String userName);
 
     boolean existsByEmail(String email);
 

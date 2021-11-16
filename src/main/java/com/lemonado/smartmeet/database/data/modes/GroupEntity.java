@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "group")
+@Table(name = "groups")
 public class GroupEntity {
 
     @Id
@@ -14,12 +14,14 @@ public class GroupEntity {
     private String name;
 
     @ManyToOne()
+    @JoinColumn(name = "creator_id")
     private UserEntity creator;
 
     @Column(name = "code", unique = true)
     private String code;
 
-    @OneToMany
+    @OneToMany()
+    @JoinColumn(name = "group_id", insertable = false, updatable = false, referencedColumnName = "id")
     private Set<GroupUserEntity> users;
 
 
