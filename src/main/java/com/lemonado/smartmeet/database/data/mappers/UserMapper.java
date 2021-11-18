@@ -27,14 +27,14 @@ public class UserMapper {
     public static UserModel toModel(UserEntity entity, int depth) {
         if (entity == null || depth == 0)
             return null;
-        var userModelBuilder = UserModelBuilder.builder()
+        return UserModelBuilder.builder()
                 .withId(entity.getId())
                 .withUsername(entity.getUsername())
                 .withPasswordHash(entity.getPasswordHash())
                 .withEmail(entity.getEmail())
                 .withDeleteTimestamp(entity.getDeleteTimestamp())
-                .withValidTokenTimestamp(entity.getValidTokenTimestamp());
-        return userModelBuilder.build();
+                .withValidTokenTimestamp(entity.getValidTokenTimestamp())
+                .build();
     }
 
 }

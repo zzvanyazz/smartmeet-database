@@ -2,6 +2,7 @@ package com.lemonado.smartmeet.database.data.modes;
 
 import javax.persistence.*;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,7 +31,7 @@ public final class RoleEntity {
             name = "user_roles",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<UserEntity> users;
+    private List<UserEntity> users = new ArrayList<>();
 
 
     public long getId() {

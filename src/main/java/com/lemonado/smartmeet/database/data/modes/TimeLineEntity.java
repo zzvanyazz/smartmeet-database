@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class TimeLineEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "start_date")

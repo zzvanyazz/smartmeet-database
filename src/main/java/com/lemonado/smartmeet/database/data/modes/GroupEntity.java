@@ -1,6 +1,7 @@
 package com.lemonado.smartmeet.database.data.modes;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -8,6 +9,7 @@ import java.util.Set;
 public class GroupEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "name")
@@ -21,8 +23,12 @@ public class GroupEntity {
     private String code;
 
     @OneToMany()
-    @JoinColumn(name = "group_id", insertable = false, updatable = false, referencedColumnName = "id")
-    private Set<GroupUserEntity> users;
+    @JoinColumn(name = "group_id",
+            nullable = false,
+            insertable = false,
+            updatable = false,
+            referencedColumnName = "id")
+    private Set<GroupUserEntity> users = new HashSet<>();
 
 
     public long getId() {
