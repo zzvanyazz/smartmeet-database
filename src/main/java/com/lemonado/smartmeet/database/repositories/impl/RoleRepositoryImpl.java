@@ -1,7 +1,7 @@
 package com.lemonado.smartmeet.database.repositories.impl;
 
 import com.lemonado.smartmeet.core.data.models.roles.RoleModel;
-import com.lemonado.smartmeet.core.repositories.RoleModelRepository;
+import com.lemonado.smartmeet.core.repositories.RoleRepository;
 import com.lemonado.smartmeet.database.data.mappers.RoleMapper;
 import com.lemonado.smartmeet.database.repositories.db.RoleDatabaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Repository
-public class RoleRepositoryImpl implements RoleModelRepository {
+public class RoleRepositoryImpl implements RoleRepository {
 
     @Autowired
     private RoleDatabaseRepository roleDatabaseRepository;

@@ -2,6 +2,9 @@ package com.lemonado.smartmeet.database.repositories.impl;
 
 import com.lemonado.smartmeet.core.data.models.timeline.TimeLineModel;
 import com.lemonado.smartmeet.core.repositories.TimeLineRepository;
+import com.lemonado.smartmeet.core.repositories.events.OnDeleteEventListening;
+import com.lemonado.smartmeet.core.repositories.events.OnNewEventListening;
+import com.lemonado.smartmeet.core.repositories.events.OnUpdateEventListening;
 import com.lemonado.smartmeet.database.data.mappers.TimeLineMapper;
 import com.lemonado.smartmeet.database.repositories.db.TimeLineDatabaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,17 +36,20 @@ public class TimeLineRepositoryImpl implements TimeLineRepository {
     }
 
     @Override
+    @OnNewEventListening
     public void remove(TimeLineModel timeLineModel) {
         var entity = TimeLineMapper.toEntity(timeLineModel);
         timeLineRepository.delete(entity);
     }
 
     @Override
+    @OnUpdateEventListening
     public TimeLineModel update(TimeLineModel timeLineModel) {
         return save(timeLineModel);
     }
 
     @Override
+    @OnDeleteEventListening
     public TimeLineModel save(TimeLineModel model) {
         var entity = TimeLineMapper.toEntity(model);
         entity = timeLineRepository.save(entity);

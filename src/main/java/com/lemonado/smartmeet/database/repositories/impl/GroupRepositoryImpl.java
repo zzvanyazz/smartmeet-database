@@ -2,6 +2,8 @@ package com.lemonado.smartmeet.database.repositories.impl;
 
 import com.lemonado.smartmeet.core.data.models.group.GroupModel;
 import com.lemonado.smartmeet.core.repositories.GroupRepository;
+import com.lemonado.smartmeet.core.repositories.events.OnNewEventListening;
+import com.lemonado.smartmeet.core.repositories.events.OnUpdateEventListening;
 import com.lemonado.smartmeet.database.data.mappers.GroupMapper;
 import com.lemonado.smartmeet.database.data.mappers.ListMapper;
 import com.lemonado.smartmeet.database.repositories.db.GroupDatabaseRepository;
@@ -19,6 +21,7 @@ public class GroupRepositoryImpl implements GroupRepository {
 
 
     @Override
+    @OnNewEventListening
     public GroupModel save(GroupModel groupModel) {
         var groupEntity = GroupMapper.toEntity(groupModel);
         groupEntity = groupRepository.save(groupEntity);
@@ -48,6 +51,7 @@ public class GroupRepositoryImpl implements GroupRepository {
     }
 
     @Override
+    @OnUpdateEventListening
     public GroupModel update(GroupModel groupModel) {
         return save(groupModel);
     }

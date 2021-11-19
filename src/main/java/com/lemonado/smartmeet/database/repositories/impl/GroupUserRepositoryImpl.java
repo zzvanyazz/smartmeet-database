@@ -2,6 +2,9 @@ package com.lemonado.smartmeet.database.repositories.impl;
 
 import com.lemonado.smartmeet.core.data.models.group.GroupUserModel;
 import com.lemonado.smartmeet.core.repositories.GroupUsersRepository;
+import com.lemonado.smartmeet.core.repositories.events.OnDeleteEventListening;
+import com.lemonado.smartmeet.core.repositories.events.OnNewEventListening;
+import com.lemonado.smartmeet.core.repositories.events.OnUpdateEventListening;
 import com.lemonado.smartmeet.database.data.mappers.GroupUserMapper;
 import com.lemonado.smartmeet.database.data.modes.GroupUserId;
 import com.lemonado.smartmeet.database.repositories.db.GroupUserDatabaseRepository;
@@ -19,6 +22,7 @@ public class GroupUserRepositoryImpl implements GroupUsersRepository {
     public GroupUserDatabaseRepository repository;
 
     @Override
+    @OnNewEventListening
     public GroupUserModel save(GroupUserModel groupUserModel) {
         var entity = GroupUserMapper.toEntity(groupUserModel);
         entity =  repository.save(entity);
@@ -26,11 +30,13 @@ public class GroupUserRepositoryImpl implements GroupUsersRepository {
     }
 
     @Override
+    @OnUpdateEventListening
     public GroupUserModel update(GroupUserModel groupUserModel) {
         return save(groupUserModel);
     }
 
     @Override
+    @OnDeleteEventListening
     public GroupUserModel remove(GroupUserModel groupUserModel) {
         var entity = GroupUserMapper.toEntity(groupUserModel);
         repository.delete(entity);

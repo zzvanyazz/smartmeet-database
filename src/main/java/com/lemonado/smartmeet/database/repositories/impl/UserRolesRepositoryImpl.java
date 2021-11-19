@@ -1,7 +1,7 @@
 package com.lemonado.smartmeet.database.repositories.impl;
 
 import com.lemonado.smartmeet.core.data.models.users.UserRoleModel;
-import com.lemonado.smartmeet.core.repositories.UserRolesModelRepository;
+import com.lemonado.smartmeet.core.repositories.UserRolesRepository;
 import com.lemonado.smartmeet.database.data.mappers.UserRoleMapper;
 import com.lemonado.smartmeet.database.repositories.db.UserRoleDatabaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class UserRolesRepositoryImpl implements UserRolesModelRepository {
+public class UserRolesRepositoryImpl implements UserRolesRepository {
 
     @Autowired
     private UserRoleDatabaseRepository userRoleDatabaseRepository;
