@@ -26,6 +26,11 @@ public class GroupUserRepositoryImpl implements GroupUsersRepository {
     }
 
     @Override
+    public GroupUserModel update(GroupUserModel groupUserModel) {
+        return save(groupUserModel);
+    }
+
+    @Override
     public GroupUserModel remove(GroupUserModel groupUserModel) {
         var entity = GroupUserMapper.toEntity(groupUserModel);
         repository.delete(entity);
